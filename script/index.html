@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>p5.js example</title>
+    <title>Hill Climbing</title>
     <style>
       body {
         padding: 0;
@@ -20,14 +20,7 @@
   </head>
   <body>
     <div id="container">
-      <input
-        id="test"
-        disabled
-        value="Hill Climb Searching!!!"
-        onclick="test()"
-      />
-      <br />
-      <br />
+      <h1>Hill climb searching</h1>
       <label for="N">N =</label>
       <input id="N" type="number" value="8" min="1" />
       <label for="maxAttempts">"maxAttempts" =</label>
@@ -39,6 +32,7 @@
         onclick="setup()"
       />
       <input id="main" type="button" value="Find solution" onclick="main()" />
+      <button id="test" onclick="test()">Show details</button>
     </div>
   </body>
 </html>

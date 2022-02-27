@@ -12,13 +12,13 @@ var globalMins;
 var maxAttempts;
 
 function generateInitialState() {
-  var number = document.getElementById("N").value;
-  if (number < 0 || number == 2 || number == 3) {
-    alert("N bust be a nonnegative natural number and not equal 2 or 3.");
+  var queen_number = document.getElementById("N").value;
+  if (queen_number < 0 || queen_number == 2 || queen_number == 3) {
+    alert("N must be a nonnegative natural queen_number and not equal 2 or 3.");
     return;
   }
   maxAttempts = document.getElementById("maxAttempts").value;
-  n = number;
+  n = queen_number;
   board = [];
   queenYCoordinates = [];
   heuristicTable = [];
@@ -45,35 +45,40 @@ function setup() {
 }
 
 function test() {
-  // var number = document.getElementById("N").value;
-  // if (number < 0 || number == 2 || number == 3) {
-  //     alert("N bust be a nonnegative natural number and not equal 2 or 3.")
-  //     return;
-  // }
-  // maxAttempts = document.getElementById("maxAttempts").value;
-  // var solved = 0;
-  // var unsolved = 0;
-  // var numberOfTests = 200;
-  // var start = performance.now();
-  // for (var i = 0; i < numberOfTests; i++) {
-  //     if (search_loop()){
-  //         solved++;
-  //     }
-  //     else {
-  //         unsolved++;
-  //     }
-  //     setHeuristicTable();
-  //     generateInitialState();
-  // }
-  // var end = performance.now()
-  // const time = end-start;
-  // console.log("-------------- TESTCASE -------------------");
-  // console.log("Tested " + numberOfTests + " problems for n = " + n + ",  each with random initial state");
-  // console.log("Number of solved problems: " + solved);
-  // console.log("Number of unsolved problems: " + unsolved);
-  // console.log("Percentage solved: " + (solved/numberOfTests)*100);
-  // console.log("Time used: " + time/1000 + " seconds");
-  // console.log("--------------------------------------------");
+  var number = document.getElementById("N").value;
+  if (number < 0 || number == 2 || number == 3) {
+    alert("N bust be a nonnegative natural number and not equal 2 or 3.");
+    return;
+  }
+  maxAttempts = document.getElementById("maxAttempts").value;
+  var solved = 0;
+  var unsolved = 0;
+  var numberOfTests = 200;
+  var start = performance.now();
+  for (var i = 0; i < numberOfTests; i++) {
+    if (search_loop()) {
+      solved++;
+    } else {
+      unsolved++;
+    }
+    setHeuristicTable();
+    generateInitialState();
+  }
+  var end = performance.now();
+  const time = end - start;
+  console.log("-------------- TESTCASE -------------------");
+  console.log(
+    "Tested " +
+      numberOfTests +
+      " problems for n = " +
+      n +
+      ",  each with random initial state"
+  );
+  console.log("Number of solved problems: " + solved);
+  console.log("Number of unsolved problems: " + unsolved);
+  console.log("Percentage solved: " + (solved / numberOfTests) * 100);
+  console.log("Time used: " + time / 1000 + " seconds");
+  console.log("--------------------------------------------");
 }
 
 function main() {
@@ -164,7 +169,6 @@ function buildHeuristicTable() {
     */
   for (x = 0; x < n; x++) {
     var queenCoord = queenYCoordinates[x];
-
     board[queenCoord][x] = false;
     for (y = 0; y < n; y++) {
       board[y][x] = true;
@@ -329,3 +333,6 @@ function setHeuristicTable() {
     }
   }
 }
+// eg.
+// [[00000]
+// [0000]]
